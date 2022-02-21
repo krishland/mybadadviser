@@ -15,6 +15,17 @@ ActiveRecord::Schema.define(version: 2022_02_21_164134) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bookings", force: :cascade do |t|
+    t.string "bribe"
+    t.bigint "politic_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "pending"
+    t.index ["politic_id"], name: "index_bookings_on_politic_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "politics", force: :cascade do |t|
     t.string "name"
     t.string "country"
@@ -45,5 +56,7 @@ ActiveRecord::Schema.define(version: 2022_02_21_164134) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "politics"
+  add_foreign_key "bookings", "users"
   add_foreign_key "politics", "users"
 end

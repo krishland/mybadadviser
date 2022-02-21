@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_21_162504) do
+ActiveRecord::Schema.define(version: 2022_02_21_164134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2022_02_21_162504) do
     t.string "third_stupid"
     t.string "fourth_stupid"
     t.string "fifth_stupid"
-    t.boolean "availability"
+    t.boolean "availability", default: true
     t.integer "rating"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

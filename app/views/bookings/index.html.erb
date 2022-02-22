@@ -3,4 +3,14 @@
 <br>
 <br>
 <br>
+<h1>Index booking</h1>
 
+<ul>
+<% @bookings.each do |booking| %>
+  <li><%= link_to booking.status, "#" %></li>
+<% end %>
+</ul>
+
+
+
+ Cette page doit afficher les locations en tant que lander et en tant que renter

@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Politic.destroy_all
+User.destroy_all
 
 usertest = User.create(email: "abc@gmail.com", password: "tototo")
 trump = Politic.create(name: "Trump", country: "USA", description: "I'm Intelligent, some people say I'm very very very Intelligent!", picture: "https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg", first_stupid: "fake news!", second_stupid: "America first", availability: true, rating: 5, user_id: usertest)
@@ -12,4 +14,3 @@ sarkozy = Politic.create(name: "Sarkozy", country: "France", description: "Longu
 fillon = Politic.create(name: "Fillon", country: "France", description: "Aujourd'hui retraité de la fonction publique, je partage ma passion pour le textile et la fiction aux plus ambitieux", picture: "https://file1.closermag.fr/var/closermag/storage/images/media/images-des-contenus/article/2017-01-25-penelope-fillon-dans-la-tourmente-les-internautes-se-moquent-de-la-femme-de-francois-fillon/france-angleterre-tournoi-des-vi-nations-2012-penelope-et-francois-fillon-paris-le-11-03-2012/5594250-1-fre-FR/France-Angleterre-Tournoi-des-VI-Nations-2012-Penelope-et-Francois-Fillon-Paris-le-11-03-2012.jpg?alias=original", first_stupid: "Vous auriez la veste en L?", second_stupid: "Moi j’ai mis 2,5 millions de personnes dans la rue quand j’ai fait la réforme des retraites… Macron est un petit joueur", availability: true, rating: 3, user_id: usertest)
 hollande = Politic.create(name: "Hollande", country: "France", description: "Vends casque de scooter peu utilisé très bon état", picture: "https://img.huffingtonpost.com/asset/5c937da82400003500c7e43d.jpeg?ops=scalefit_630_noupscale", first_stupid: "We can be do what we want to do", second_stupid: "Le changement c'est maintenant mdr", availability: true, rating: 2, user_id: usertest)
 melenchon = Politic.create(name: "Mélenchon", country: "France", description: "Tous les mardi et jeudi soir en live sur Twitch, séances ASMR et sophrologie", picture: "https://img.20mn.fr/V8ttWYtcQAqyB8-GNUOZbw/768x492_reaction-jean-luc-melenchon-agite-twitter-toute-journee.jpg", first_stupid: "La république, C'EST MOI!!!", second_stupid: "Vous pouriez faire l'effort d'aller au-delà de 140 mots", availability: true, rating: 5, user_id: usertest)
-

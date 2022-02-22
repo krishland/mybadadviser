@@ -1,0 +1,10 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<%= simple_form_for(@booking) do |f| %>
+  <%= f.input :status, collection: ["pending", "accepted", "refused"]%>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,13 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>Index politic</h1>
+
+<ul>
+<% @politics.each do |politic| %>
+  <li><%= link_to politic.name, politic_path(politic) %></li>
+<% end %>
+</ul>

@@ -1,6 +1,8 @@
 class Politic < ApplicationRecord
   belongs_to :user
-  validates :name, presence: true
+  has_many :bookings
+
+  validates :name, presence: true, uniqueness: true
   validates :country, presence: true
   validates :description, presence: true
   validates :picture, presence: true

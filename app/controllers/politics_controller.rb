@@ -25,9 +25,11 @@ class PoliticsController < ApplicationController
   end
 
   def update
-    @politic.update(politic_params)
-
-    redirect_to politic_path(@politic), notice: 'Your crooked politic was successfully updated.'
+    if @politic.update(politic_params)
+        redirect_to politic_path(@politic), notice: 'Your crooked politic was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy

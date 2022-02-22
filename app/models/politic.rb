@@ -1,5 +1,6 @@
 class Politic < ApplicationRecord
   belongs_to :user
+
   validates :name, presence: true
   validates :country, presence: true
   validates :description, presence: true

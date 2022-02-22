@@ -5,5 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-test1 = Politic.create(name: "Trump1", country: "USA", description: "test", picture: "test", first_stupid: "fake news!", second_stupid: "America first", availability: true, rating: 5, user_id: 1)

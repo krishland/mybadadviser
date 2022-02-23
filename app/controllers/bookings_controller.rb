@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_politic, only: [:new, :create]
   def index
     @bookings = Booking.all
   end
@@ -14,9 +15,10 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-
+    @booking.politic = @politic
+    @booking.user = current_user
     if @booking.save
-      redirect_to @booking, notice: "Your booking is confirmed"
+      redirect_to booking_path(@booking), notice: "Your booking is confirmed"
     else
       render :new
     end
@@ -40,11 +42,15 @@ class BookingsController < ApplicationController
 
   private
 
+  def set_politic
+    @politic = Politic.find(params[:politic_id])
+  end
+
   def set_booking
     @booking = Booking.find(params[:id])
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :bribe, :booking_id, :user_id)
+    params.require(:booking).permit(:status, :bribe)
   end
 end

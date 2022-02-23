@@ -45,9 +45,10 @@
 
 
 
-
-<%= link_to "Update your crooked politic",  edit_politic_path(@politic) %>
-<%= link_to "Delete #{@politic.name}",
-            politic_path(@politic),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+<% if @politic.user == current_user %>
+  <%= link_to "Update your crooked politic",  edit_politic_path(@politic) %>
+  <%= link_to "Delete #{@politic.name}",
+              politic_path(@politic),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+<% end %>

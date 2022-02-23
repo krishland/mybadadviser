@@ -20,3 +20,16 @@
   h1, h2, h3, h4 {
       opacity: 80%;
   }
+
+  .cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    border-radius: 4%;
+  }
+
+  .card-img-top {
+    border-top-left-radius: 4%;
+    border-top-right-radius: 4%;
+  }
+

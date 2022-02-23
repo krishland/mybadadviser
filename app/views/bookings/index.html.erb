@@ -13,6 +13,17 @@
 <% end %>
 </ul>
 
-
-
- Cette page doit afficher les locations en tant que lander et en tant que renter
+<div class="container">
+  <div class="card-product">
+    <img src="https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg" />
+    <% @bookings.each do |politic| %>
+    <div class="card-product-infos" d-flex>
+      <h2>Donald <%= @Politic.name %></h2>
+      <h6>Country <%= @Politic.country %></h6>
+      <br>
+      <h6>Description: <p><%= @Politic.description %></p></h6>
+      <h6>Availability: <p>Ready for precious advices</p></h6>
+    </div>
+    <% end %>
+  </div>
+</div>

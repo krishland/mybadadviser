@@ -4,21 +4,23 @@
     <p>Get the <strong>worst</strong> advices from your favorite <strong>(un)trusted</strong> politics ! </p>
     <p></p>
 
-    <a class="btn btn-flat" href="#">Discover them</a>
+    <a class="btn btn-outline-info" href="/politics">Discover All the Crooked</a>
   </div>
-<div class="btn-global">
-  hello
-</div>
 </div>
 
-
-<% @politics.each do |politic| %>
-  <div class="card" style="width: 18rem;">
-    <img src=<%=politic.picture %> class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= politic.name %></h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+<div class= "container">
+  <h2> Discover some of the <strong>VERY BEST</strong> !</h2>
+  <div class="cards">
+    <% @politics.each do |politic| %>
+      <div class="card-trip">
+        <img src=<%=politic.picture %> />
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= politic.name %></h2>
+            <p><%= politic.country %></p>
+            <p><%= politic.description %></p>
+          </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

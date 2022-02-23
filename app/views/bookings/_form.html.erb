@@ -5,6 +5,9 @@
 <br>
 
 <%= simple_form_for(@booking) do |f| %>
-  <%= f.input :status, collection: ["pending", "accepted", "refused"]%>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <% if current_user == @booking.politic.user %>
+    <%= f.input :status, collection: ["pending", "accepted", "refused"]%>
+  <% end %>
+  <%= f.input :bribe %>
+  <%= f.submit "Submit bribe", class: "btn btn-primary" %>
 <% end %>

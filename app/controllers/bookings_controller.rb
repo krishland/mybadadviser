@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     authorize @booking
     @booking.politic = @politic
+    @booking.status = "pending"
     @booking.user = current_user
     if @booking.save
       redirect_to booking_path(@booking), notice: "Your booking is confirmed"
@@ -28,6 +29,7 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    authorize @booking
   end
 
   def update

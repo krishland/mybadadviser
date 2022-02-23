@@ -13,7 +13,8 @@
 
 <%=if policy(booking).show? %>
   <%= link_to "Update your crooked booking",  edit_booking_path(@booking) %>
-  <%= link_to "Delete #{@politic.name} booking",
-              politic_bookings_path,
+  <%= link_to "Delete the booking of #{@politic.name}",
+              booking_path(@booking),
               method: :delete,
               data: { confirm: "Are you sure?" } %>
+<% end %>

@@ -4,7 +4,7 @@
 <br>
 <br>
 
-<%= simple_form_for [@booking, @politic] do |f| %>
+<%= simple_form_for [ @politic, @booking ] do |f| %>
   <%= f.input :status, collection: ["pending", "accepted", "refused"]%>
   <%= f.input :bribe %>
   <%= f.submit "Submit review", class: "btn btn-primary" %>

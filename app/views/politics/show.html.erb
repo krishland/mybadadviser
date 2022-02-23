@@ -10,7 +10,7 @@
 <p><%= @politic.country %></p>
 <p><%= @politic.first_stupid %></p>
 
-<%=if policy(politic).create? %>
+<% if @politic.user == current_user %>
   <%= link_to "Update your crooked politic",  edit_politic_path(@politic) %>
   <%= link_to "Delete #{@politic.name}",
               politic_path(@politic),

@@ -7,7 +7,8 @@
 
 <ul>
 <% @bookings.each do |booking| %>
-  <li><%= link_to booking.status, "#" %></li>
+  <%=if policy(booking).show? %>
+    <li><%= link_to booking.status, "#" %></li>
 <% end %>
 </ul>
 

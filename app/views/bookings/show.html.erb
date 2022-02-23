@@ -11,8 +11,9 @@
 <p><%= @politic.first_stupid %></p>
 <p><%= @booking.status %></p>
 
-<%= link_to "Update your crooked booking",  edit_booking_path(@booking) %>
-<%= link_to "Delete #{@politic.name} booking",
-            politic_bookings_path,
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+<%=if policy(booking).show? %>
+  <%= link_to "Update your crooked booking",  edit_booking_path(@booking) %>
+  <%= link_to "Delete #{@politic.name} booking",
+              politic_bookings_path,
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>

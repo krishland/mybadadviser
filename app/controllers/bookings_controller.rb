@@ -1,19 +1,23 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+
   def index
-    @bookings = Booking.all
+    @bookings = policy_scope(Booking)
   end
 
   def show
+    authorize @booking
     @politic = @booking.politic
   end
 
   def new
+    authorize @booking
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
 
     if @booking.save
       redirect_to @booking, notice: "Your booking is confirmed"
@@ -26,6 +30,7 @@ class BookingsController < ApplicationController
   end
 
   def update
+    authorize @booking
     if @booking.update(booking_params)
       redirect_to booking_path(@booking), notice: 'Your crooked booking was successfully updated.'
     else
@@ -34,6 +39,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    authorize @booking
     @booking.destroy
     redirect_to politic_path(@booking.politic)
   end

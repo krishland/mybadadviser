@@ -6,23 +6,38 @@
 <h1>Index booking</h1>
 
 <ul>
-<% @bookings.each do |booking| %>
-  <% if policy(booking).index? %>
-    <li><%= link_to booking.status, "#" %></li>
-  <% end %>
-<% end %>
+<%# @bookings.each do |booking| %>
+  <%# if policy(booking).index? %>
+    <%#= link_to booking.status, "#" %>
+  <%# end %>
+<%# end %>
 </ul>
 
 <div class="container">
-  <div class="card-product">
-    <img src="https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg" />
-    <% @bookings.each do |politic| %>
-    <div class="card-product-infos" d-flex>
-      <h2>Donald <%= @Politic.name %></h2>
-      <h6>Country <%= @Politic.country %></h6>
-      <br>
-      <h6>Description: <p><%= @Politic.description %></p></h6>
-      <h6>Availability: <p>Ready for precious advices</p></h6>
+  <div class="card">
+    <% @bookings.each do |booking| %>
+    <div class="card-product-infos card-product d-flex" style="margin: 20px;">
+    <% if booking.politic.picture %>
+      <%= image_tag(booking.politic.picture, class: "politic_booking_card") %>
+    <% else %>
+      <img src="https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg" />
+    <% end %>
+      <div>
+        <h2>Donald <%= booking.politic.name %></h2>
+        <h6>Country <%= booking.politic.country %></h6>
+        <br>
+        <h6>Description: <p><%= booking.politic.description %></p></h6>
+        <h6>Availability: <p>Ready for precious advices</p></h6>
+
+        <% if booking.user == current_user || booking.politic.user == current_user %>
+          <%= link_to "Counter offer",  edit_booking_path(booking), class: "btn btn-primary" %>
+          <%= link_to "Delete the booking of #{booking.politic.name}",
+                      booking_path(booking),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </div>
+
     </div>
     <% end %>
   </div>

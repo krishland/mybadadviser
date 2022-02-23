@@ -18,4 +18,4 @@ fillon = Politic.create(name: "Fillon", country: "France", description: "Aujourd
 hollande = Politic.create(name: "Hollande", country: "France", description: "Vends casque de scooter peu utilisé très bon état", picture: "https://img.huffingtonpost.com/asset/5c937da82400003500c7e43d.jpeg?ops=scalefit_630_noupscale", first_stupid: "We can be do what we want to do", second_stupid: "Le changement c'est maintenant mdr", availability: true, rating: 2, user: usertest)
 melenchon = Politic.create(name: "Mélenchon", country: "France", description: "Tous les mardi et jeudi soir en live sur Twitch, séances ASMR et sophrologie", picture: "https://img.20mn.fr/V8ttWYtcQAqyB8-GNUOZbw/768x492_reaction-jean-luc-melenchon-agite-twitter-toute-journee.jpg", first_stupid: "La république, C'EST MOI!!!", second_stupid: "Vous pouriez faire l'effort d'aller au-delà de 140 mots", availability: true, rating: 5, user: usertest)
 
-booking1 = Booking.create(bribe: "5", status: "pending")
+booking1 = Booking.create(user: usertest, politic: melenchon, bribe: "5", status: "pending")

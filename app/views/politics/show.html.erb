@@ -4,11 +4,46 @@
 <br>
 <br>
 <br>
-<h1>Show politic</h1>
 
-<h2><%= @politic.name %></h2>
-<p><%= @politic.country %></p>
-<p><%= @politic.first_stupid %></p>
+<div class="container">
+    <h1>Vous êtes sur le profil de : <%= @politic.name %></h1>
+    <div class="card-trip">
+        <%= image_tag(@politic.picture, :alt => "rss feed", :size => "300x300" ) %>
+    <div class="card-trip-infos">
+        <div>
+        <h2>Informations</h2>
+        <p>Pays : <%= @politic.country %></p>
+        </div>
+        <%= link_to "Réserver", "#", class: "btn btn-flat" %>   
+    </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="card-trip">
+    <div class="card-trip-infos">
+        <div>
+        <h4>Quelques mots sur moi</h4>
+        <p><%= @politic.description %></p>
+    </div>
+    </div>
+</div>
+
+
+    <div class="card-trip">
+    <div class="card-trip-infos">
+        <div>
+        <h4>Mes phrases cultes</h4>
+        <p>* <%= @politic.first_stupid %></p>
+        <p>* <%= @politic.second_stupid %></p>
+        </div>
+    </div>
+    </div>
+
+
+
+
 
 
 <%= link_to "Update your crooked politic",  edit_politic_path(@politic) %>

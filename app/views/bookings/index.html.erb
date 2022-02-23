@@ -30,7 +30,7 @@
         <h6>Availability: <p>Ready for precious advices</p></h6>
 
         <% if booking.user == current_user || booking.politic.user == current_user %>
-          <%= link_to "Counter offer",  edit_booking_path(booking) %>
+          <%= link_to "Counter offer",  edit_booking_path(booking), class: "btn btn-primary" %>
           <%= link_to "Delete the booking of #{booking.politic.name}",
                       booking_path(booking),
                       method: :delete,

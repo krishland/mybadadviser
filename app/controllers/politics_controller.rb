@@ -35,12 +35,13 @@ class PoliticsController < ApplicationController
     if @politic.save
       redirect_to politic_path(@politic), notice: 'politic was successfully created.'
     else
-      p @politic.errors.messages
+      #p @politic.errors.messages
       render :new
     end
   end
 
   def edit
+    authorize @politic
   end
 
   def update

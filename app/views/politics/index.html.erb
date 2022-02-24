@@ -6,8 +6,18 @@
 <br>
 <h1>Index politic</h1>
 
-<ul>
-<% @politics.each do |politic| %>
-  <li><%= link_to politic.name, politic_path(politic) %></li>
-<% end %>
-</ul>
+<div class="container">
+  <div class="politics_card">
+    <ul>
+    <% @politics.each do |politic| %>
+      <li><%= link_to politic.name, politic_path(politic) %></li>
+    <% end %>
+    </ul>
+  </div>
+
+  <div class="mapbox" style="width: 100%; height: 600px;"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>

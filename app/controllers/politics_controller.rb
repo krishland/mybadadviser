@@ -1,8 +1,20 @@
 class PoliticsController < ApplicationController
   before_action :set_politic, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show, :index]
+
+
 
   def index
     @politics = policy_scope(Politic)
+
+    @markers = @politics.geocoded.map do |politic|
+      {
+        lat: politic.latitude,
+        lng: politic.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { politic: politic }),
+        image_url: helpers.asset_url("corruption.png")
+      }
+    end
   end
 
   def show
@@ -16,12 +28,14 @@ class PoliticsController < ApplicationController
 
   def create
     @politic = Politic.new(politic_params)
+    @politic.user = current_user
     authorize @politic
     # @politic.user = current_user
 
     if @politic.save
       redirect_to politic_path(@politic), notice: 'politic was successfully created.'
     else
+      p @politic.errors.messages
       render :new
     end
   end
@@ -52,7 +66,7 @@ class PoliticsController < ApplicationController
   end
 
   def politic_params
-    params.require(:politic).permit(:name, :description, :country, :picture, :first_stupid, :second_stupid, :availability, :user_id, :rating)
+    params.require(:politic).permit(:name, :address, :description, :country, :picture, :first_stupid, :second_stupid, :availability, :user_id, :rating)
   end
 
 end

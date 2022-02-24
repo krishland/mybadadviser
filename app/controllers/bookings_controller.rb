@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
+  
   def create
     @booking = Booking.new(booking_params)
     authorize @booking

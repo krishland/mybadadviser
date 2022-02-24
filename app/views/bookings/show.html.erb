@@ -7,9 +7,9 @@
 <h1>Show booking</h1>
 
 <h2><%= @politic.name %></h2>
-<p><%= @politic.country %></p>
-<p><%= @politic.first_stupid %></p>
-<p><%= @booking.status %></p>
+<p>Pays: <%= @politic.country %></p>
+<p>Top phrase: <%= @politic.first_stupid %></p>
+<p>Status: <%= @booking.status %></p>
 <p>Bribe: <%= @booking.bribe %></p>
 
 <% if @booking.user == current_user || @politic.user == current_user %>

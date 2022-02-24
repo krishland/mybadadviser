@@ -2,7 +2,16 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   before_action :set_politic, only: [:new, :create]
   def index
-    @bookings = policy_scope(Booking)
+    bookings = policy_scope(Booking)
+    @bookings_mine = bookings.where(user: current_user)
+
+    @bookings_my_politics = bookings.find_all do |booking|
+      current_user.politics.any? do |politic|
+        politic == booking.politic
+      end
+    end
+
+    # @bookings_my_politics.group_by{ |booking| booking.status }["accepted"] #=> pour grouper les booking par status, puis recuperer seulement les "accepted"
   end
 
   def show
@@ -15,7 +24,7 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
-  
+
   def create
     @booking = Booking.new(booking_params)
     authorize @booking

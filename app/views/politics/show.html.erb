@@ -15,7 +15,7 @@
         <p>Pays : <%= @politic.country %></p>
         </div>
         <%#= link_to "Réserver", politic_bookings_path(@politic, params: { booking: {bribe: "0", status: "pending"}}), method: :post, class: "btn btn-flat" %>
-        <%= link_to "Réserver", new_politic_booking_path(@politic), class: "btn btn-flat" %>
+        <%= link_to "Réserver", new_politic_booking_path(@politic), class: "secondary-button" %>
     </div>
     </div>
 </div>
@@ -47,7 +47,7 @@
 
 
 <% if @politic.user == current_user %>
-  <%= link_to "Update your crooked politic",  edit_politic_path(@politic) %>
+  <%= link_to "Update your crooked politic",  edit_politic_path(@politic), class: "secondary-button" %>
   <%= link_to "Delete #{@politic.name}",
               politic_path(@politic),
               method: :delete,

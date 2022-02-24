@@ -7,6 +7,9 @@
 <%= simple_form_for(@politic) do |f| %>
   <%= f.input :name %>
   <%= f.input :country %>
+  <%= f.input :address,
+            input_html: { data: { geocoder_target: "address" } },
+            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
   <%= f.input :description %>
   <%= f.input :picture %>
   <%= f.input :first_stupid %>

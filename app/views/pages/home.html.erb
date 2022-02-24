@@ -3,23 +3,20 @@
     <h1>My Bad Adviser</h1>
     <p>Get the <strong>worst</strong> advices from your favorite <strong>(un)trusted</strong> politics ! </p>
     <p></p>
-    <a class="btn btn-outline-info" href="/politics">Discover All the Crooked</a>
+
+    <a class="principal-button" href="/politics">Discover All the Crooked</a>
   </div>
 </div>
 
-<div class="container">
-  <h2 class="text-center">Our top 3 Crooked Politics</h2>
-  <div class="cards">
-    <% @politics.each do |politic| %>
-      <div class="card-trip">
-        <img src=<%=politic.picture %> />
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= politic.name %></h2>
-            <p><%= politic.description %></p>
-          </div>
-          <%= link_to "See this Politic", politic_path(politic), class: "btn btn-primary" %>
-        </div>
+
+<div class="cards mx-4px">
+  <% @politics.each do |politic| %>
+    <div class="card" style="width: 18rem;">
+      <img src=<%=politic.picture %> class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= politic.name %></h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <%= link_to "See this Politic", politic_path(politic), class: "secondary-button" %>
       </div>
     <% end %>
   </div>

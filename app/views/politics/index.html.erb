@@ -6,6 +6,18 @@
 <br>
 <h1>Index politic</h1>
 
+<h1>Searching politics</h1>
+<div class="container">
+  <%= form_tag politics_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find your politic here"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
 <div class="containermap">
   <div class="politics_card">
     <ul>

@@ -5,15 +5,18 @@ class PoliticsController < ApplicationController
 
 
   def index
-    @politics = policy_scope(Politic)
-
-    @markers = @politics.geocoded.map do |politic|
-      {
-        lat: politic.latitude,
-        lng: politic.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { politic: politic }),
-        image_url: helpers.asset_url("corruption.png")
-      }
+    if params[:query].present?
+      @politics = policy_scope(Politic).where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @politics = policy_scope(Politic)
+      @markers = @politics.geocoded.map do |politic|
+        {
+          lat: politic.latitude,
+          lng: politic.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { politic: politic }),
+          image_url: helpers.asset_url("corruption.png")
+        }
+      end
     end
   end
 

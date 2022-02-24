@@ -10,7 +10,7 @@
   <div class="politics_card">
     <ul>
     <% @politics.each do |politic| %>
-      <li><%= link_to politic.name, politic_path(politic) %></li>
+      <li><%= link_to politic.name, politic_path(politic), class: "secondary-button" %></li>
     <% end %>
     </ul>
   </div>

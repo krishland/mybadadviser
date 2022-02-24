@@ -26,12 +26,14 @@ class PoliticsController < ApplicationController
 
   def create
     @politic = Politic.new(politic_params)
+    @politic.user = current_user
     authorize @politic
     # @politic.user = current_user
 
     if @politic.save
       redirect_to politic_path(@politic), notice: 'politic was successfully created.'
     else
+      p @politic.errors.messages
       render :new
     end
   end
@@ -62,7 +64,7 @@ class PoliticsController < ApplicationController
   end
 
   def politic_params
-    params.require(:politic).permit(:name, :description, :country, :picture, :first_stupid, :second_stupid, :availability, :user_id, :rating)
+    params.require(:politic).permit(:name, :address, :description, :country, :picture, :first_stupid, :second_stupid, :availability, :user_id, :rating)
   end
 
 end

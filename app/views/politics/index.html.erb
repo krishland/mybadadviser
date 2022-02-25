@@ -1,31 +1,48 @@
 <br>
 <br>
-<h1>Crooked Politics Portfolio</h1>
-
 <div class="container">
+  <h1>Crooked Politics Portfolio</h1>
+
+  <br>
   <%= form_tag politics_path, method: :get do %>
     <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find your politic here"%>
-    <%= submit_tag "Search", class: "principal-button" %>
+    <%= submit_tag "Search", class: "secondary-button" %>
   <% end %>
-</div>
+  <br>
+  <br>
 
-  <ul>
-  <% @politics.each do |politic| %>
-    <li><%= link_to politic.name, politic_path(politic)%></li>
-  <% end %>
-  </ul>
+  <div class="row">
+    <div class="col-6">
+    <ul class="cards-map">
+      <% @politics.each do |politic| %>
+        <div class="card-product">
+          <%= image_tag "#{politic.picture}" %>
+          <div class="card-product-infos">
+            <h2><%= politic.name %></h2>
+            <p><%= politic.description %></p>
+            <br>
+            <%= link_to "See this Politic", politic_path(politic), class: "principal-button" %>
+            <br>
+          </div>
+          <br>
+        </div>
+        <br>
+      <% end %>
+    </ul>
+    </div>
 
+  <div class="col-6">
+    <div class="containermap">
 
-<div class="containermap">
-  <div class="politics_card">
+      <div class="mapbox" style="width:100%; height: 100vh;"
+        data-controller="mapbox"
+        data-mapbox-markers-value="<%= @markers.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
   </div>
 
-  <div class="mapbox" style="width: 50%; height: 300px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
 </div>

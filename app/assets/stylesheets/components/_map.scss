@@ -16,7 +16,14 @@
 
 .containermap {
   display: flex;
-  width: 300px;
-  height: 300px;
-  left: 90%;
+}
+
+#mapbox {
+  height: 100vh;
+}
+
+.cards-map {
+  display: grid;
+  grid-template-columns: 1fr;
+  flex-grow: 1;
 }

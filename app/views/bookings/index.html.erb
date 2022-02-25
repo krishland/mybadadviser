@@ -17,37 +17,39 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-     <div class="card">
+     <div class="cardindexbooking">
       <% accepted = @bookings_my_politics.group_by{ |booking| booking.status }["accepted"] %>
       <% if accepted != nil %>
         <% accepted.each do |booking| %>
         <div class="card-product">
-          <% if booking.politic.picture %>
-            <%= image_tag(booking.politic.picture, class: "politic_booking_card") %>
-          <% else %>
-            <img src="https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg" />
-          <% end %>
-          <div>
-            <h2><%= booking.politic.name %></h2>
-            <h6>Country: <%= booking.politic.country %></h6>
-            <br>
-            <h6>Description: <p><%= booking.politic.description %></p></h6>
-            <h6>Availability: <p><%= booking.status %></p></h6>
-            <% if booking.user == current_user || booking.politic.user == current_user %>
-              <%= link_to "Counter offer",  edit_booking_path(booking), class: "secondary-button" %>
-              <%= link_to "Delete the booking of #{booking.politic.name}",
-                          booking_path(booking),
-                          method: :delete,
-                          data: { confirm: "Are you sure?" } %>
+            <% if booking.politic.picture %>
+              <%= image_tag(booking.politic.picture, class: "politic_booking_card") %>
+            <% else %>
+              <img src="https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg" />
             <% end %>
+            <div class="card-product-infos">
+              <h2><%= booking.politic.name %></h2>
+              <p>Status: <%= booking.status %></p>
+              <p>Amount: <%= booking.bribe %></p>
+              <br>
+              <% if booking.user == current_user || booking.politic.user == current_user %>
+                <%= link_to "Counter offer",  edit_booking_path(booking), class: "secondary-button" %>
+                <%= link_to "Delete the booking of #{booking.politic.name}",
+                            booking_path(booking),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %>
+              <% end %>
+              <br>
+            </div>
+            <br>
           </div>
-        </div>
+          <br>
         <% end %>
       <% end %>
       </div>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="card">
+      <div class="cardindexbooking">
         <% pending = @bookings_my_politics.group_by{ |booking| booking.status }["pending"] %>
         <% if pending != nil %>
           <% pending.each do |booking| %>
@@ -57,12 +59,11 @@
             <% else %>
               <img src="https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg" />
             <% end %>
-            <div>
+            <div class="card-product-infos">
               <h2><%= booking.politic.name %></h2>
-              <h6>Country: <%= booking.politic.country %></h6>
+              <p>Status: <%= booking.status %></p>
+              <p>Amount: <%= booking.bribe %></p>
               <br>
-              <h6>Description: <p><%= booking.politic.description %></p></h6>
-              <h6>Availability: <p><%= booking.status %></p></h6>
               <% if booking.user == current_user || booking.politic.user == current_user %>
                 <%= link_to "Counter offer",  edit_booking_path(booking), class: "secondary-button" %>
                 <%= link_to "Delete the booking of #{booking.politic.name}",
@@ -70,15 +71,132 @@
                             method: :delete,
                             data: { confirm: "Are you sure?" } %>
               <% end %>
+              <br>
             </div>
+            <br>
           </div>
+          <br>
           <% end %>
         <% end %>
       </div>
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-      <div class="card">
+      <div class="cardindexbooking">
         <% refused = @bookings_my_politics.group_by{ |booking| booking.status }["refused"] %>
+        <% if refused != nil %>
+          <% refused.each do |booking| %>
+            <div class="card-product">
+            <% if booking.politic.picture %>
+              <%= image_tag(booking.politic.picture, class: "politic_booking_card") %>
+            <% else %>
+              <img src="https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg" />
+            <% end %>
+            <div class="card-product-infos">
+              <h2><%= booking.politic.name %></h2>
+              <p>Status: <%= booking.status %></p>
+              <p>Amount: <%= booking.bribe %></p>
+              <br>
+              <% if booking.user == current_user || booking.politic.user == current_user %>
+                <%= link_to "Counter offer",  edit_booking_path(booking), class: "secondary-button" %>
+                <%= link_to "Delete the booking of #{booking.politic.name}",
+                            booking_path(booking),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %>
+              <% end %>
+              <br>
+            </div>
+            <br>
+          </div>
+          <br>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="container">
+  <h1>My Bribes</h1>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#accepted" type="button" role="tab" aria-controls="home" aria-selected="true">Accepted</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="profile" aria-selected="false">Pending</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#refused" type="button" role="tab" aria-controls="contact" aria-selected="false">Refused</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="accepted" role="tabpanel" aria-labelledby="home-tab">
+     <div class="cardindexbooking">
+      <% accepted = @bookings_mine.group_by{ |booking| booking.status }["accepted"] %>
+      <% if accepted != nil %>
+        <% accepted.each do |booking| %>
+        <div class="card-product">
+            <% if booking.politic.picture %>
+              <%= image_tag(booking.politic.picture, class: "politic_booking_card") %>
+            <% else %>
+              <img src="https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg" />
+            <% end %>
+            <div class="card-product-infos">
+              <h2><%= booking.politic.name %></h2>
+              <p>Status: <%= booking.status %></p>
+              <p>Amount: <%= booking.bribe %></p>
+              <br>
+              <% if booking.user == current_user || booking.politic.user == current_user %>
+                <%= link_to "Counter offer",  edit_booking_path(booking), class: "secondary-button" %>
+                <%= link_to "Delete the booking of #{booking.politic.name}",
+                            booking_path(booking),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %>
+              <% end %>
+              <br>
+            </div>
+            <br>
+          </div>
+          <br>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="cardindexbooking">
+        <% pending = @bookings_mine.group_by{ |booking| booking.status }["pending"] %>
+        <% if pending != nil %>
+          <% pending.each do |booking| %>
+          <div class="card-product">
+            <% if booking.politic.picture %>
+              <%= image_tag(booking.politic.picture, class: "politic_booking_card") %>
+            <% else %>
+              <img src="https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg" />
+            <% end %>
+            <div class="card-product-infos">
+              <h2><%= booking.politic.name %></h2>
+              <p>Status: <%= booking.status %></p>
+              <p>Amount: <%= booking.bribe %></p>
+              <br>
+              <% if booking.user == current_user || booking.politic.user == current_user %>
+                <%= link_to "Counter offer",  edit_booking_path(booking), class: "secondary-button" %>
+                <%= link_to "Delete the booking of #{booking.politic.name}",
+                            booking_path(booking),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %>
+              <% end %>
+              <br>
+            </div>
+            <br>
+          </div>
+          <br>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="refused" role="tabpanel" aria-labelledby="contact-tab">
+      <div class="cardindexbooking">
+        <% refused = @bookings_mine.group_by{ |booking| booking.status }["refused"] %>
         <% if refused != nil %>
           <% refused.each do |booking| %>
           <div class="card-product">
@@ -87,12 +205,11 @@
             <% else %>
               <img src="https://pagtour.info/wp-content/uploads/2018/09/img-coupe-du-monde-2026-donald-trump-met-un-gros-coup-de-pression-1524824401_x600_articles-454974-2.jpg" />
             <% end %>
-            <div>
+            <div class="card-product-infos">
               <h2><%= booking.politic.name %></h2>
-              <h6>Country: <%= booking.politic.country %></h6>
+              <p>Status: <%= booking.status %></p>
+              <p>Amount: <%= booking.bribe %></p>
               <br>
-              <h6>Description: <p><%= booking.politic.description %></p></h6>
-              <h6>Availability: <p><%= booking.status %></p></h6>
               <% if booking.user == current_user || booking.politic.user == current_user %>
                 <%= link_to "Counter offer",  edit_booking_path(booking), class: "secondary-button" %>
                 <%= link_to "Delete the booking of #{booking.politic.name}",
@@ -100,8 +217,11 @@
                             method: :delete,
                             data: { confirm: "Are you sure?" } %>
               <% end %>
+              <br>
             </div>
+            <br>
           </div>
+          <br>
           <% end %>
         <% end %>
       </div>

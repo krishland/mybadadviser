@@ -6,7 +6,8 @@ class PoliticsController < ApplicationController
 
   def index
     if params[:query].present?
-      @politics = policy_scope(Politic).where("name ILIKE ?", "%#{params[:query]}%")
+      sql_query = "name ILIKE :query OR country ILIKE :query"
+      @politics = policy_scope(Politic).where(sql_query, query: "%#{params[:query]}%")
     else
       @politics = policy_scope(Politic)
       @markers = @politics.geocoded.map do |politic|

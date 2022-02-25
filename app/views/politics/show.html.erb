@@ -1,41 +1,37 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<div class="container">
-    <h1>Vous êtes sur le profil de : <%= @politic.name %></h1>
+
+
+<div class="container" style="width:60%">
+    <h1>Here is the profile of : <%= @politic.name %></h1>
     <div class="card-trip">
         <%= image_tag(@politic.picture, :alt => "rss feed", :size => "300x300" ) %>
     <div class="card-trip-infos">
         <div>
-        <h2>Informations</h2>
-        <p>Pays : <%= @politic.country %></p>
+        <h2>Details</h2>
+        <p>Country : <%= @politic.country %></p>
         </div>
         <%#= link_to "Réserver", politic_bookings_path(@politic, params: { booking: {bribe: "0", status: "pending"}}), method: :post, class: "btn btn-flat" %>
-        <%= link_to "Réserver", new_politic_booking_path(@politic), class: "secondary-button" %>
+        <%= link_to "Book", new_politic_booking_path(@politic), class: "principal-button" %>
     </div>
     </div>
 </div>
+<br>
 
-
-<div class="container">
+<div class="container" style="width:60%">
     <div class="card-trip">
     <div class="card-trip-infos">
         <div>
-        <h4>Quelques mots sur moi</h4>
+        <h4>Some about me</h4>
         <p><%= @politic.description %></p>
     </div>
     </div>
 </div>
 
-
+<br>
     <div class="card-trip">
-    <div class="card-trip-infos">
+    <div class="card-trip-infos" style="width:60%">
         <div>
-        <h4>Mes phrases cultes</h4>
+        <h4>Catchphrases</h4>
         <p>* <%= @politic.first_stupid %></p>
         <p>* <%= @politic.second_stupid %></p>
         </div>
@@ -43,7 +39,7 @@
     </div>
 
 
-
+<br>
 
 
 <% if @politic.user == current_user %>

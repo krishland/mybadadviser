@@ -1,11 +1,7 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<%= simple_form_for [@politic, @booking] do |f| %>
-  <%#= f.input :status, collection: ["pending", "accepted", "refused"]%>
-  <%= f.input :bribe %>
-  <%= f.submit "Submit bribe", class: "secondary-button" %>
-<% end %>
+<div class="container">
+  <%= simple_form_for [@politic, @booking] do |f| %>
+    <%#= f.input :status, collection: ["pending", "accepted", "refused"]%>
+    <%= f.input :bribe, placeholder: "Do your best to corrupt me..."%>
+    <%= f.submit "Submit bribe", class: "secondary-button" %>
+  <% end %>
+</div>

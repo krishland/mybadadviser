@@ -1,2 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
+
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9)), asset-url('bg.jpg');
+    
+}

@@ -1,10 +1,7 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-
+<div class="container">
 <%= simple_form_for(@booking) do |f| %>
   <%= f.input :status, collection: ["pending", "accepted", "refused"]%>
   <%= f.submit "Submit review", class: "secondary-button" %>
 <% end %>
+</div>
+

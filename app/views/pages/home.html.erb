@@ -7,17 +7,43 @@
     <a class="principal-button" href="/politics">Discover All the Crooked</a>
   </div>
 </div>
-
+<br>
+<br>
 <div class="container">
-  <h2 class="text-center">Our Top Crooked Politics</h2>
+  <h2 class="text-center">How it works</h2>
+  <br>
   <div class="cards">
-    <% @politics.each do |politic| %>
+    <div class="card">
+      <%= image_tag "choose.png" %>
+      <h4>Choose</h4>
+      <p>the politician you need for</p>
+    </div>
+    <div class="card">
+      <%= image_tag "bribe.png" %>
+      <h4>Bribe</h4>
+      <p>with something they can't refuse</p>
+    </div>
+    <div class="card">
+      <%= image_tag "get.png" %>
+      <h4>Get</h4>
+      <p>for sure what you want</p>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="container">
+  <h2 class="text-center">Our 3 Latest Crooked Politics</h2>
+  <br>
+  <div class="cards">
+    <% @politics.last(3).each do |politic| %>
     <div class="card-trip">
-      <img src=<%=politic.picture %>/>
+      <%= image_tag "#{politic.picture}" %>
       <div class="card-trip-infos">
         <div>
           <h2><%= politic.name %></h2>
           <p><%= politic.description %></p>
+          <br>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <%= link_to "See this Politic", politic_path(politic), class: "secondary-button" %>
           </div>
